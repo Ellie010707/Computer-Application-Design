@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>동물약국🐶🐱🐹</title>
+<!--로컬CSS파일-->
+<link th:href="@{/css/findForm.css}" rel="stylesheet"/>
+<!--구글폰트API-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--배경설정style-->
+<style th:inline="text">
+	body { background : url([[@{/img/bg_red.png}]]) no-repeat;
+		   background-size : cover; }
+</style>
+</head>
+<body>
+	<header>
+		<a href="/"><span class=title>동물약국🐶🐱🐹</span></a>
+	</header>
+	
+	<div class=titleInfo>
+		<span class="menu">아이디 찾기</span>
+		<span class="menuInfo">가입하신 계정의 이름/이메일을 입력해<br>
+			  아이디를 찾습니다.</span>
+	</div>
+	
+	<div class="findIdForm">
+		<form th:action="@{/findId}" th:object="${idMember}" method="post">
+		
+			<label for="mb_name">이름</label><br>
+			<input type="text" th:field="*{mb_name}" placeholder="NAME"><br>
+			
+			<label for="mb_email">이메일</label><br>
+			<input type="email" th:field="*{mb_email}" placeholder="EMAIL">
+			
+			<button type="submit" class="btn_submit">확인</button>
+		</form>
+		<span th:if="${#strings.equals(idResult,'success')}">입력 정보와 일치하는 아이디<br>- [[${idMember.mb_id}]]</span>
+		<span th:if="${#strings.equals(idResult,'error')}">입력 정보와 일치하는 아이디가<br> 없습니다</span>
+	</div>
+	
+	<div class=titleInfo>
+		<span class="menu">비밀번호 찾기</span>
+		<span class="menuInfo">가입하신 계정의 아이디/이름/이메일을<br>
+			  입력해 아이디를 찾습니다.</span>
+	</div>
+	
+	<div class="findPwForm">
+		<form th:action="@{/findPw}" th:object="${pwMember}" method="post">
+			<label for="mb_id">아이디</label><br>
+			<input type="text" th:field="*{mb_id}" placeholder="ID"><br>
+		
+			<label for="mb_name">이름</label><br>
+			<input type="text" th:field="*{mb_name}" placeholder="NAME"><br>
+			
+			<label for="mb_email">이메일</label><br>
+			<input type="email" th:field="*{mb_email}" placeholder="EMAIL">
+			<button type="submit" class="btn_submit">확인</button>
+		</form>
+		<span th:if="${#strings.equals(pwResult,'success')}">입력하신 이메일로 임시 비밀번호를<br> 전송했습니다.</span>
+		<span th:if="${#strings.equals(pwResult,'error')}">입력 정보와 일치하는 사용자가<br> 없습니다.</span>
+	</div>
+</body>
+</html>

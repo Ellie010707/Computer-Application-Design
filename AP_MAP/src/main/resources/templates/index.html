@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>동물약국🐶🐱🐹</title>
+</head>
+
+<!--구글폰트API-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--FONTAWESOME5-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link th:href="@{/map/css/Map.css}" rel="stylesheet" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d608c80c6520a5c40271bee55d33f98&libraries=services"></script>
+<script th:inline="javascript">
+
+    var rows = '[[${rows}]]';
+    var pageL = '[[${boardList}]]';
+    var keyword = '[[${keyword}]]';
+    var review = '[[${review}]]';
+    var Jrows = JSON.parse(rows);
+    var JpageL = JSON.parse(pageL);
+    var Jkey = JSON.parse(keyword);
+    var Jreview = JSON.parse(review);
+
+</script>  
+
+<body>
+<div class="topbar">
+	<header>
+		<button type="button" id="sidebarCollapse">
+			<span><i class="fas fa-bars"></i></span>
+		</button>
+		<a href="/map"><span class=title>동물약국🐶🐱🐹</span></a>
+	</header>
+	<!-- Sidebar  -->
+    <nav id="sidebar">
+        <div id="dismiss">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <span class=title>동물약국🐶🐱🐹</span>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a th:href="@{/map}">홈</a>
+            </li>
+            <li>
+                <a th:href="@{http://localhost:8000/mypage}">마이페이지</a>
+            </li>
+            <li>
+                <a th:href="@{/logout}">로그아웃</a>
+            </li>
+        </ul>
+    </nav>
+	
+	<div id="searchbar" class="Searchbar" role="banner">
+		
+		<div id="search" class="Search" >
+		    <form id="search_form" class="search_Form" th:action="@{/map/search}" method="get">
+		    	<div class="sigun_select">
+					<select name="si" class="select_bar">
+						<option value="시/군/구">시/군/구
+						<option th:each="nm:${NM}" th:selected="${nm == si}" th:text="${nm}">
+					</select>
+				</div><br>
+				<input type="text" id="search" 
+						name="search" class="search_keyword" placeholder="내용을 입력해주세요" maxlength="80" autocomplete="off" accesskey="s">
+				<input type="submit" class="search_bt" value="검색" style="cursor: pointer;">
+			</form>
+		</div>
+	</div>
+	<br>
+	<hr>
+</div>
+
+<div id="info" class="Info">
+	<div id="Allcnt" th:text="|장소 ${Allcnt}|"></div>
+	<div class=PlayHover id="hos_list" th:each="row:${boardList}"><br>
+	   <div id="hos_nm" th:text="${row.BIZPLC_NM}" 
+	   		th:onclick="listClick([[${row.BIZPLC_NM}]], 
+	   									[[${row.REFINE_WGS84_LAT}]], 
+	   									[[${row.REFINE_WGS84_LOGT}]])"
+	   				th:onmouseover="listover([[${row.BIZPLC_NM}]], 
+	   									[[${row.REFINE_WGS84_LAT}]], 
+	   									[[${row.REFINE_WGS84_LOGT}]])"
+	   				th:onmouseout="listout()">
+	   </div><br>
+	   <div th:text="${row.REFINE_LOTNO_ADDR}"></div>
+	   <div th:text="${row.LOCPLC_FACLT_TELNO}" style="color: green;"></div>
+	   <hr>
+	</div>
+	
+	<!--     // paging button -->
+	<div class="info3">
+         <span aria-hidden="true">
+            <a class="page-Link" th:href="@{/map/search?si={si}&search={search}&page=1 (si = ${si}, search= ${keyword})}" aria-label="Previous">처음</a>
+            <!-- <a class="page-link" th:href="@{/request?si=&search=&page=1}" aria-label="Previous">처음</a> -->
+         </span>
+         <span aria-hidden="true">
+            <a class="page-Link" th:href="@{/map/search?si={si}&search={search}&page={page} (page = ${pagination.prevBlock}, si = ${si}, search= ${keyword})}" aria-label="Previous"><</a>
+         </span>
+         <th:block  th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+            <span class="page-item" 
+             th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+            th:each="pageButton : ${#numbers.sequence(start, end)}">
+               <a id="page-Num" th:class="${pageButton == pageNo} ? 'Active'" th:href="@{/map/search?si={si}&search={search}&page={page} (page = ${pageButton} , si = ${si}, search= ${keyword})}" th:text=${pageButton}></a>
+            </span>
+         </th:block>
+         <span aria-hidden="true">
+            <a class="page-Link" th:href="@{/map/search?si={si}&search={search}&page={page} (page = ${pagination.nextBlock}, si = ${si}, search= ${keyword})}" aria-label="Next">></a>
+         </span>
+         <span aria-hidden="true">
+            <a class="page-Link" th:href="@{/map/search?si={si}&search={search}&page={page} (page = ${pagination.totalPageCnt}, si = ${si}, search= ${keyword})}" aria-label="Previous">끝</a>
+         </span>
+      </div>
+</div>
+<div id="map" class="View" style="height: 1110px;"></div>
+
+
+<!-- Font Awesome JS -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript" src="/map/js/js.js"></script>
+
+</body>
+</html>

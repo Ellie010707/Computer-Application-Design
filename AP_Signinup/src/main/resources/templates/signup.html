@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>동물약국🐶🐱🐹</title>
+<!--로컬CSS파일-->
+<link th:href="@{/css/signup.css}" rel="stylesheet"/>
+<!--구글폰트CDN-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--배경설정style-->
+<style th:inline="text">
+	body { background : url([[@{/img/bg_red.png}]]) no-repeat;
+		   background-size : cover; }
+</style>
+</head>
+<body>
+	<header>
+		<a href="/log"><span class=title>동물약국🐶🐱🐹</span></a>
+	</header>
+	
+	<div class=signupForm>
+		<form th:action="@{/signup}" th:object=${member} method="post">
+			<label for="mb_id">아이디</label><br>
+			<input type="text" th:field=*{mb_id} placeholder="ID"><br>
+			<p class="error-message" th:each="error : ${#fields.errors('mb_id')}" th:text="${error}">error</p>
+			
+			<label for="mb_pw">비밀번호</label><br>
+			<input type="password" th:field=*{mb_pw} placeholder="PASSWORD"><br>
+			<p class="error-message" th:each="error : ${#fields.errors('mb_pw')}" th:text="${error}">error</p>
+			
+			<label for="mb_pw_confirm">비밀번호 확인</label><br>
+			<input type="password" th:field=*{mb_pw_confirm} placeholder="PASSWORD CONFIRM"><br>
+			<p class="error-message" th:each="error : ${#fields.errors('mb_pw_confirm')}" th:text="${error}">error</p>
+			
+			<label for="mb_name">이름</label><br>
+			<input type="text" th:field=*{mb_name} placeholder="NAME"><br>
+			<p class="error-message" th:each="error : ${#fields.errors('mb_name')}" th:text="${error}">error</p>
+			
+			<label for="mb_email">이메일</label><br>
+			<input type="email" th:field=*{mb_email} placeholder="EMAIL"><br>
+			<p class="error-message" th:each="error : ${#fields.errors('mb_email')}" th:text="${error}">error</p>
+			
+			
+			<button type="submit" class="btn_signup">회원가입</button>
+		</form>
+	</div>
+	
+<!--jQuery CDN-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>

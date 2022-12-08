@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+.title {
+	padding:0px 10px 0px 10px;  
+	font-size:25px; 
+	text-align:center;
+	background-color: #85ac33;
+	font-weight:bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+	margin-left:25px;
+}
+	
+header { text-align:left; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
+header > button { 
+	color: white; 
+	background-color:#85ac33; 
+	padding:0px 10px 0px 10px; 
+	font-size:25px; 
+	border:none; 
+	cursor:pointer;
+	margin-left:5px;
+	}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/*sidebar*/
+#sidebar {
+    width: 365px;
+    position: fixed;
+    top: 0;
+    left: -365px;
+    height: 100vh;
+    z-index: 999;
+    background:#85ac33;
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background:#85ac33;
+    font-size:25px;
+    position: absolute;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    margin-left:10px;
+}
+
+#dismiss:hover {
+    background: #5A7424;
+}
+
+#sidebar {
+    padding: 10px 0px 20px 0px;
+    background:#85ac33;
+    font-weight:bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.sidebar-header {
+	margin-left : 50px;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul{
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+	color: #fff;
+    padding: 10px 20px 10px 20px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    background: #5A7424;
+    text-decoration:none;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #5A7424
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #fff;
+}

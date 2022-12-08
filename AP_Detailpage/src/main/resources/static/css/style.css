@@ -1,0 +1,355 @@
+@charset "UTF-8";
+
+.title {
+	padding: 10px 10px 10px 10px;  
+	font-size: 30px; 
+	text-align: center;
+	background-color: #85ac33;
+	font-weight: bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+	color: white;
+	margin-left: 35px;
+}
+	
+header { 
+	font-size: 43pt;
+	font-weight: bold;
+	text-align: center; 
+	margin-bottom: 20px;
+}
+
+header > a { 
+	text-decoration: none !important; 
+}
+
+header > a:hover { 
+	text-decoration: none !important 
+}
+
+header > button { 
+	color: white; 
+	background-color: #85ac33; 
+	padding: 0px 10px 0px 10px; 
+	font-size: 25px; 
+	border: none; 
+	cursor: pointer;
+	margin-left: 5px;
+	}
+
+
+.mid{
+    width: 90%;
+    max-width: 2000px;
+    height: 90%;
+    margin: 10px 20px 20px 20px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+.mid1{
+	display: flex;
+	min-height: 100%;
+	min-width: 1fr;
+	justify-content: center;
+  	align-items: center;
+  	text-align: center;
+}
+
+.ph_name{
+	font-size: 3.5vw;
+	text-align: center;
+	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin: 10px;
+}
+
+#location{
+	width: 1.7vw;
+}
+
+.ph_address{
+	font-size: 1.7vw;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.midavg{
+	display: flex;
+	min-height: 100%;
+	min-width: 1fr;	
+	justify-content: center;
+  	align-items: center;
+  	font-size: 40px;
+}
+
+.mid2{
+	display: flex;
+	min-height: 100%;
+	min-width: 1fr;	
+	justify-content: center;
+  	align-items: center;
+  	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#btn{
+	background-color : #85ac33;
+	color: white;
+  	border: none;
+  	border-radius: 8px;
+  	padding: 10px 20px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-family: 'Noto Sans KR', sans-serif;
+  	font-size: 1.2vw;
+  	position: relative;
+    top: -3.5vh;
+    left: 3vw;
+}
+
+#btn:hover{
+	background-color : #92be46;
+}
+
+#exampleFormControlTextarea4{
+	resize: none;
+	width: 85vw;
+	height: 19vh;
+	border-color: #85ac33;
+}
+
+.green-border textarea {
+    border: 1px solid #85ac33;
+}
+
+.green-border .form-control:focus {
+    border: 2px solid #85ac33;
+    box-shadow: 0 0 0 0.2rem rgba(134, 173, 52, 0.3);
+}
+
+.mid3{
+	display: flex;
+	min-height: 100%;
+	min-width: 1fr;	
+}
+
+.mid4{
+	display: flex;
+	min-height: 100%;
+	min-width: 1fr;
+	justify-content: center;
+  	align-items: center;	
+}
+
+@media screen and (min-width:850px){
+   .mid{
+   		grid-template-columns: 1fr 1fr;
+   		grid-template-rows: 1fr 1fr 1fr;
+       	grid-gap: 30px;
+       	column-gap: 60px;
+      	margin: 10px auto;
+	}
+   
+   .mid1{
+   		display: flex;
+   		min-height: 100%;
+   		font-size: 1.2vw; 
+   		min-width: 1fr;
+	}
+
+	.midavg{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;
+   		grid-row: 2/3;
+   		font-size: 5vw;
+   		justify-content: center;
+  		align-items: center;
+	}
+
+	.mid2{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;
+   		grid-row: 3/5;   
+   		font-size: 1.2vw; 
+   		justify-content: center;
+     	align-items: center;
+     	font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.mid3{
+   		display:inline-flex;
+   		min-height:30%;
+   		min-width:1fr;   
+   		grid-column:2/3;
+  	 	grid-row:1/5;
+   		align-items:start;
+   		font-size: 1.5vw;
+   		font-family: 'Noto Sans KR', sans-serif;
+   		justify-content: flex-start;
+	}
+
+	.mid4{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;   
+   		grid-column: 2/3;
+   		grid-row: 4/5;
+   		justify-content: center;
+	}
+
+	#v_l {
+  		border-left: 3px solid #85ac33;
+ 		height: 120%;
+  		position: absolute;
+  		left: 50%;
+  		margin-left: -3px;
+  		top: 10%;
+	}
+
+	.vl{
+    	float: left;
+    	margin-left: 5%;
+    	width: 30%;
+    	box-sizing: border-box;
+	}
+	
+	#btn{
+		background-color : #85ac33;
+		color: white;
+  		border: none;
+  		border-radius: 8px;
+  		padding: 10px 20px;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-family: 'Noto Sans KR', sans-serif;
+  		font-size: 1.2vw;
+  		position: relative;
+    	top: -3.5vh;
+    	left: 3vw;
+	}
+
+	#btn:hover{
+		background-color : #92be46;
+	}
+	
+	#exampleFormControlTextarea4{
+		resize: none;
+		width: 38vw;
+		height: 19vh;
+		border-color: #85ac33;
+	}
+}
+
+@media screen and (min-width:1600px){
+   .mid{
+   		grid-template-columns: 1fr 1fr;
+       	grid-template-rows: 1fr 1fr 1fr 1fr;
+       	grid-gap: 30px;
+       	column-gap: 60px;
+       	margin: 10px auto;
+       
+   }
+   
+   .mid1{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;
+   		grid-row: 1/3;
+   		font-size: 1.2vw;
+	}
+	
+	.midavg{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;
+   		grid-row: 3/4;
+   		font-size: 5vw;
+   		justify-content: center;
+  		align-items: center;
+	}
+	
+	.mid2{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;
+   		grid-row: 4/6;
+   		font-size: 1.2vw;    
+   		justify-content: center;
+     	align-items: center;
+     	font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.mid3{
+   		display: flex;
+   		min-height: 30%;
+   		min-width: 1fr;   
+   		grid-column: 2/3;
+   		grid-row: 1/6;
+   		align-items: start;
+   		vertical-align: top;
+   		font-size: 1.5vw;
+   		font-family: 'Noto Sans KR', sans-serif;
+   		justify-content: flex-start;
+	}
+	
+	.mid4{
+   		display: flex;
+   		min-height: 100%;
+   		min-width: 1fr;   
+   		grid-column: 2/3;
+   		grid-row: 5/6;
+   		justify-content: center;
+	}
+	
+	#v_l {
+  		border-left: 3px solid #85ac33;
+  		height: 170%;
+  		position: absolute;
+  		left: 50%;
+  		margin-left: -3px;
+  		top: 10%;
+	}
+	
+	.vl{
+    	float: left;
+    	margin-left: 5%;
+    	width: 30%;
+    	box-sizing: border-box;
+	}
+	
+	#btn{
+		background-color : #85ac33;
+		color: white;
+  		border: none;
+  		border-radius: 8px;
+  		padding: 10px 20px;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-family: 'Noto Sans KR', sans-serif;
+  		font-size: 1.2vw;
+  		position: relative;
+    	top: -3.5vh;
+    	left: 3vw;
+	}
+
+	#btn:hover{
+		background-color : #92be46;
+	}
+}
+
+footer{
+	background-color: #85ac33;
+	font-family: 'Noto Sans KR', sans-serif;
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    padding: 6px;
+    text-align: center;
+}
+

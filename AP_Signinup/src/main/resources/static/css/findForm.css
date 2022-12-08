@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+.title {
+	padding:26px; 
+	font-size:45px; 
+	text-align:center;
+	background-color: #e84234;
+	font-weight:bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+}
+
+header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
+
+.titleInfo{
+	margin-top:50px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.titleInfo .menu{
+	text-align:left;
+	font-size:40px;
+	font-weight:bold;
+	color:white;
+	font-family: 'Noto Sans KR', sans-serif;
+	width:23%
+}
+
+.titleInfo .menuInfo{
+	text-align:left;
+	font-size:15px;
+	font-weight:300;
+	color:white;
+	font-family: 'Noto Sans KR', sans-serif;
+	width:23%
+}
+
+.findIdForm{
+	margin-top:20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.findPwForm {
+	margin-top:20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-bottom:100px;
+}
+
+.findIdForm span, .findPwForm span {
+	text-align:left;
+	width:19.5%;
+	margin-top:-10px;
+	margin-bottom:-20px;
+	color:#e84234;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:500;
+	background-color:white;
+	opacity:0.8;
+	padding: 10px 0px 10px 3px;
+	margin-left:-37px;
+	padding-left:5px;
+}
+
+.findIdForm form, .findPwForm form {
+	text-align:left;
+	color:white;
+	font-family: 'Noto Sans KR', sans-serif;
+	width:30%;
+	margin-left:100px;
+}
+
+.findIdForm label, .findPwForm label {
+	font-weight:300;
+	font-size:13px;
+}
+
+.findIdForm input, .findPwForm input {
+	height:auto;
+	font-size:15px;
+	padding: 10px;
+	border: 0.5px solid #fff;
+	border-radius:3px;
+	margin-bottom:20px;
+	width:60%;
+	color:white;
+}
+
+.findIdForm input:focus, .findPwForm input:focus {
+	border: 1px solid #fff;
+}
+
+.findIdForm input, textarea, .findPwForm input, textarea {
+	background-color:#e84234;
+}
+
+.findIdForm input::placeholder, .findPwForm input::placeholder {
+	color:white;
+	opacity:0.7;
+}
+
+button {
+	color:white;
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color:#3498db;
+	font-size:15px;
+	padding:7px 15px 8px 15px;
+	border:none;
+	border-radius:3px;
+	margin-left:15px;
+	font-weight:500;
+	cursor:pointer;
+}

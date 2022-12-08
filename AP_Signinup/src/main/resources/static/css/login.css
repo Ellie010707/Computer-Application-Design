@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.title {
+	padding:5px 0px 5px 0px; 
+	font-size:45px; 
+	text-align:center;
+	background-color: #e84234;
+	font-weight:bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+}
+	
+header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
+
+.titleInfo {
+	margin-top:50px;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+	color:white;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.loginForm {
+	margin-top:50px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	
+}
+
+.loginForm form {
+	margin-left:-5%
+}
+
+.loginForm span[role=alert] {
+	text-align:center;
+	color:#f9ca46;
+	font-size:15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:700;
+	margin-left:10px;
+	margin-bottom:10px;
+	margin-top:-45px;
+}
+
+.loginForm label {
+	font-size:13px;
+	color:white;
+	text-align:left;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
+}
+
+.loginForm input {
+	width:130%;
+	height:auto;
+	font-size:15px;
+	color:white;
+	padding: 10px;
+	border: 0.5px solid #fff;
+	border-radius:3px;
+	margin-bottom:20px;
+}
+
+.loginForm input:focus {
+	border: 1px solid #fff;
+}
+
+.loginForm input, textarea {
+	background-color:#e84234;
+}
+
+.loginForm input::placeholder {
+	color:white;
+	opacity:0.7;
+}
+
+.loginForm a {
+	color:white;
+	font-size:12px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
+	text-align:center;
+	margin-left:80px;
+}
+
+button {
+	width:140%;
+	color:white;
+	font-size:15px;
+	padding:10px;
+	height:auto;
+	border:none;
+	border-radius:3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:500;
+	cursor:pointer;
+}
+
+button.btnLogin {
+	margin-top:50px;
+	background-color:#3498db;
+}
+
+button.btnSignup {
+	margin-top:15px;
+	background-color:#5e5e5e;
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ap.consumer.dao.MemberDAO">
+
+	<!-- 사용자 정보 조회 -->
+	<select id="findByMbid" resultType="Member">
+		SELECT mb_id, mb_pw, mb_pw as mb_pw_confirm, mb_name, mb_email 
+		FROM member 
+		WHERE mb_id=#{mb_id}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findIdByNameAndEmail" resultType="String">
+		SELECT mb_id
+		FROM member
+		WHERE mb_name=#{mb_name} AND mb_email=#{mb_email}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findPwByIdAndNameAndEmail" resultType="Integer">
+		SELECT count(*)
+		FROM member
+		WHERE mb_id=#{mb_id} AND mb_name=#{mb_name} AND mb_email=#{mb_email}
+	</select>
+	
+	<!-- 로그인 정보 찾기 -->
+	<select id="loadUserByIdAndPw" resultType="Member">
+		SELECT mb_id, mb_pw, mb_pw as mb_pw_confirm, mb_name, mb_email 
+		FROM member 
+		WHERE mb_id=#{mb_id} AND mb_pw=#{mb_pw}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insertNewAccount" parameterType="Member">
+		INSERT INTO member 
+		VALUES(#{mb_id}, #{mb_pw}, #{mb_name}, #{mb_email})
+	</insert>
+	
+	<!-- 비밀번호 업데이트 -->
+	<update id="updateNewPassword">
+		UPDATE member
+		SET mb_pw=#{new_pw}
+		WHERE mb_id=#{mb_id}
+	</update>
+</mapper>

@@ -1,0 +1,63 @@
+server:
+  port: 8000
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+      
+#devtools
+spring:
+  devtools:
+    livereload:
+      enabled: true
+
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: map-service    
+          uri: lb://AP-CONSUMER
+          predicates:
+            - Path=/map/**
+          filters:
+            - RewritePath=/map/?(?<segment>.*), /$\{segment} 
+            
+        - id: detail-service
+          uri: lb://AP-DETAIL
+          predicates:
+            - Path=/star/**
+            
+        - id: user-detail-service
+          uri: lb://USER-DETAIL-SERVICE
+          predicates:
+            - Path=/mypage/**
+          filters:
+            - RewritePath=/mypage/?(?<segment>.*), /$\{segment} 
+            
+        - id: signup-service
+          uri: lb://AP-SIGNINUP
+          predicates:
+            - Path=/**
+          
+            
+         
+          
+        
+            
+        
+            
+        
+            
+        
+
+       
+            
+            
+            

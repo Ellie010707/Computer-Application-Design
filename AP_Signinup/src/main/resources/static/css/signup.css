@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
+
+.title {
+	padding:26px; 
+	font-size:45px;
+	text-align:center;
+	background-color: #e84234;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:bold; 
+	color:white;
+}
+
+.signupForm {
+	margin-top:50px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.signupForm form {
+	margin-left:-5%
+}
+
+.signupForm label {
+	font-size:13px;
+	color:white;
+	text-align:left;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
+}
+
+.signupForm input {
+	width:130%;
+	height:auto;
+	font-size:15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+	padding: 10px;
+	border: 0.5px solid #fff;
+	border-radius:3px;
+	margin-bottom:15px;
+}
+
+.signupForm input:focus {
+	border: 0.5px solid #fff;
+}
+
+.signupForm input, textarea {
+	background-color:#e84234;
+}
+
+.signupForm input::placeholder {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
+	color:white;
+	opacity:0.7;
+}
+
+button.btn_signup{
+	margin-top:30px;
+	background-color:#3498db;
+	width:140%;
+	color:white;
+	font-size:15px;
+	padding:10px;
+	height:auto;
+	border:none;
+	border-radius:3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:500;
+	cursor:pointer;
+}
+
+p.error-message {
+	color:#f9ca46;
+	font-size:12px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:700;
+	margin-top:-15px;
+	padding:0;
+}
