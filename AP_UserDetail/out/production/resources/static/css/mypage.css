@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
+
+p.error-message {
+	color:#f9ca46;
+	font-size:18px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:700;
+	margin-top:-15px;
+	padding:0;
+}
+
+.title {
+	padding:5px 10px 5px 10px; 
+	font-size:25px; 
+	text-align:center;
+	background-color: #85ac33;
+	font-weight:bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+}
+
+.titleInfo{
+	margin-top:20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.titleInfo .menu{
+	text-align:left;
+	font-size:25px;
+	font-weight:bold;
+	color:white;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-left:-150px;
+}
+
+.mypageForm {
+	margin-top:20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.mypageForm form {
+	margin-left:-5%
+}
+
+.mypageForm label {
+	font-size:13px;
+	color:white;
+	text-align:left;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
+}
+
+.mypageForm input {
+	width:130%;
+	height:auto;
+	font-size:15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+	padding: 10px;
+	border: 0.5px solid #fff;
+	border-radius:3px;
+	margin-bottom:15px;
+}
+
+.mypageForm input:focus {
+	border: 0.5px solid #fff;
+}
+
+.mypageForm input, textarea {
+	background-color:#85ac33;
+}
+
+.mypageForm input::placeholder {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
+	color:white;
+	opacity:0.7;
+}
+
+input[type="text"]:disabled {
+	background-color:#5A7424;
+}
+
+button {
+	width:140%;
+	color:white;
+	font-size:15px;
+	padding:10px;
+	height:auto;
+	border:none;
+	border-radius:3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:500;
+	cursor:pointer;
+}
+
+button.btnInfoEdit {
+	margin-top:50px;
+	background-color:#3498db;
+}
+
+button.btnCancel {
+	margin-top:15px;
+	background-color:#5e5e5e;
+}

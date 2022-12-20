@@ -67,7 +67,9 @@ public class APStarController {
 	/* Pagination */
     @RequestMapping("star/starupdate")
     public String updateinfo(HttpServletRequest req1, Model model1) throws UnsupportedEncodingException {
-    	String rv_score = req1.getParameter("rating");
+		log.info("[CONTROLLER]review" + req1.getParameterMap().keySet());
+		log.info("[CONTROLLER]review" + req1.getParameterMap().values());
+		String rv_score = req1.getParameter("rating");
     	String rv_comment = req1.getParameter("text");
     	String BIZPLC_NM = req1.getParameter("P_NM");
     	String REFINE_ROADNM_ADDR = req1.getParameter("RD");

@@ -1,0 +1,116 @@
+version: '3'
+
+services:
+  mysql:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306 # HOST:CONTAINER
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: ce
+    volumes:
+      - "mysqldata:/var/lib/mysql"
+    networks:
+      - msa
+
+  detail_page:
+    build:
+      context: ./AP_Detailpage
+      dockerfile: Dockerfile
+    container_name: detail_page
+    ports:
+      - 8281:8281
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ce?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    networks:
+      - msa
+    restart: always
+
+  gateway:
+    build:
+      context: ./AP_gateway-service
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - 8000:8000
+    networks:
+      - msa
+    restart: always
+
+  map:
+    build:
+      context: ./AP_MAP
+      dockerfile: Dockerfile
+    container_name: map
+    ports:
+      - 8181:8181
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ce?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    networks:
+      - msa
+    restart: always
+  server:
+    build:
+      context: ./AP_Server
+      dockerfile: Dockerfile
+    container_name: server
+    ports:
+      - 8761:8761
+    depends_on:
+      - mysql
+    networks:
+      - msa
+    restart: always
+
+  sign:
+    build:
+      context: ./AP_Signinup
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    container_name: signin
+    ports:
+      - 8180:8180
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ce?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    networks:
+      - msa
+    restart: always
+
+  user_detail:
+    build:
+      context: ./AP_UserDetail
+      dockerfile: Dockerfile
+    container_name: user_detail
+    ports:
+      - 8183:8183
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ce?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    networks:
+      - msa
+    restart: always
+
+networks:
+  msa:
+    driver: bridge
+
+volumes:
+  mysqldata:

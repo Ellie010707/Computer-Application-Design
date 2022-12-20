@@ -1,5 +1,7 @@
-create user c##apdb identified by ap1111;
+create user c;##apdb identified by ap1111;
 
-grant connect, dba, resource to c##apdb;
+grant connect to c;
+grant resource to c;
+grant dba to c;
 
 commit;

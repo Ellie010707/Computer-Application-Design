@@ -17,6 +17,7 @@ public class ApDetailpageApplication {
 		return new RestTemplate();
 	}
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(ApDetailpageApplication.class, args);
 	}

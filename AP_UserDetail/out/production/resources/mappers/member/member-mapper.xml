@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ap.user.dao.MemberDAO">
+	<!-- 비밀번호 업데이트 -->
+	<update id="updateNewPassword">
+		UPDATE member
+		SET mb_pw=#{encoded_new_pw}, mb_name=#{mb_name}, mb_email=#{mb_email}
+		WHERE mb_id=#{mb_id}
+	</update>
+</mapper>

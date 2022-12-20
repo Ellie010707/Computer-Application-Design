@@ -8,8 +8,8 @@
 <!-- CDN : jQuery, Bootstrap&Javascript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- 로컬css파일 -->
-<link rel="stylesheet" th:href="@{http://localhost:8182/css/style.css}" />
-<link rel="stylesheet" th:href="@{http://localhost:8182/css/star.css}" />
+<link rel="stylesheet" th:href="@{http://detail_page:8281/css/style.css}" />
+<link rel="stylesheet" th:href="@{http://detail_page:8281/css/star.css}" />
 <!--구글폰트API-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <!--배경설정style-->
 <style th:inline="text">
-	header { background : url([[@{http://localhost:8182/img/bg_header_long.png}]]) no-repeat; 
+	header { background : url([[@{http://detail_page:8281/img/bg_header_long.png}]]) no-repeat;
 		   	 background-size : cover; /* #85ac33; */ }
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
 		<table>
         	<tr th:each="name:${getname2}">
         		<td><span class="ph_name" th:text="${name.BIZPLC_NM}"></span><br>
-        		<img id="location" th:src="@{http://localhost:8182/img/location.png}" alt="Marker"/>
+        		<img id="location" th:src="@{http://detail_page:8281/img/location.png}" alt="Marker"/>
 				<span class="ph_address" th:text="${name.REFINE_ROADNM_ADDR}"></span></td>
 			</tr> 
 		</table>
