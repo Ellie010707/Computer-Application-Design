@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ap.consumer.dao.ReviewDAO">
+<!-- 
+	<select id="getReview" resultType="com.ap.consumer.mvo.ReviewVO">
+		SELECT * FROM review WHERE BIZPLC_NM = #{NM} AND ROADNM_ZIP_CD = #{RD}
+	</select>
+	
+ -->	
+	<select id="getReview" resultType="com.ap.consumer.mvo.ReviewVO">
+	 	SELECT count(RV_SCORE) S_count, round(avg(RV_SCORE), 1) S_avg, count(RV_COMMENT) RV_count
+		FROM review 
+		WHERE REFINE_ROADNM_ADDR = #{RD}
+	</select>
+
+</mapper>
