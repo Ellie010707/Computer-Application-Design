@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     container_name: detail_page
     ports:
-      - 8281:8281
+      - 8182:8182
     depends_on:
       - mysql
     environment:
