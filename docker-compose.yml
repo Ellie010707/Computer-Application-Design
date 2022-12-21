@@ -16,6 +16,11 @@ services:
       - "mysqldata:/var/lib/mysql"
     networks:
       - msa
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3306" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
   detail_page:
     build:
@@ -33,6 +38,11 @@ services:
     networks:
       - msa
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8281"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
   gateway:
     build:
@@ -44,6 +54,11 @@ services:
     networks:
       - msa
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
   map:
     build:
@@ -61,6 +76,12 @@ services:
     networks:
       - msa
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8181"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+
   server:
     build:
       context: ./AP_Server
@@ -73,6 +94,11 @@ services:
     networks:
       - msa
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
   sign:
     build:
@@ -90,6 +116,11 @@ services:
     networks:
       - msa
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8180"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
   user_detail:
     build:
@@ -107,6 +138,11 @@ services:
     networks:
       - msa
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8183"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
 networks:
   msa:
