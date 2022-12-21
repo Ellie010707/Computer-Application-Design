@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<!-- CDN : jQuery, Bootstrap&Javascript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 로컬css파일 -->
+<link rel="stylesheet" th:href="@{http://detail-page:8183/css/style.css}" />
+<link rel="stylesheet" th:href="@{http://detail-page:8183/css/star.css}" />
+<!--구글폰트API-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--FONTAWESOME5-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<!--배경설정style-->
+<style th:inline="text">
+	body { background : url([[@{/img/bg_green_small.png}]]) no-repeat, #85ac33; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<!--메인을 누르면 지도로 돌아가야 함(미완)-->
+<header>
+	<a href="/star/home"><span class=title>동물약국🐶🐱🐹</span></a>
+</header>
+
+<div class="mid">
+
+	<!--약국이름과 주소 / 약국별점-->
+	<div class="mid1">
+		<table>
+        	<tr th:each="name:${getname2}">
+        		<td><span class="ph_name" th:text="${name.BIZPLC_NM}"></span><br>
+        		<img id="location" th:src="@{http://detail-page:8183/img/location.png}" alt="Marker"/>
+				<span class="ph_address" th:text="${name.REFINE_ROADNM_ADDR}"></span></td>
+			</tr> 
+		</table>
+	</div>
+	<div class="midavg">
+	    <div th:switch="${avg}" id="star" style="color: transparent; text-shadow:0 0 0 rgb(249, 202, 70);">
+			<div th:case="5" th:text="'⭐⭐⭐⭐⭐'"></div>
+			<div th:case="4" th:text="'⭐⭐⭐⭐'"></div>
+			<div th:case="3" th:text="'⭐⭐⭐'"></div>
+			<div th:case="2" th:text="'⭐⭐'"></div>	
+			<div th:case="1" th:text="'⭐'"></div>
+		</div>
+	</div>
+
+	<br>
+	
+	<!--리뷰 작성(별점, 코멘트)-->	
+	<div class="mid2">
+		<form name="myform" id="myform" method="post" action="starupdate">
+    		<fieldset>
+        		<input type="radio" name="rating" value="5" id="rate1" required><label for="rate1">⭐</label>
+        		<input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+        		<input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+        		<input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+        		<input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+    		</fieldset>
+    		<input type="hidden" name="P_NM" th:value="${P_NM}">
+    		<input type="hidden" name="RD" th:value="${pageMaker.REFINE_ROADNM_ADDR}">
+			<input type="submit" id="btn" value="등록">
+        	<br>
+    		<div class="form-group green-border">
+    			<textarea class="form-control" name="text" id="exampleFormControlTextarea4" 
+    			placeholder="후기를 작성해주세요.(글자 수 500자 제한)"
+    			autocomplete="off" maxlength="500" required></textarea>
+			</div>  				  	
+    		<br>	
+		</form>
+	</div>
+
+	<hr>
+		<div class="vl" id="v_l"></div>
+
+	<!--약국 리뷰 모음-->
+	<div class="mid3">
+		<table>
+			<tr th:each="info:${getallinfo}">
+				<td><div style="font-size: 22px; margin-bottom: 15px;">[[${info.mb_id}]]</div>
+					<div th:switch="${info.rv_score}" id="starR" style="color: transparent;
+					text-shadow:0 0 0 rgb(249, 202, 70); font-size:20px">
+						<div th:case="5" th:text="'⭐⭐⭐⭐⭐'"></div>
+						<div th:case="4" th:text="'⭐⭐⭐⭐'"></div>
+						<div th:case="3" th:text="'⭐⭐⭐'"></div>
+						<div th:case="2" th:text="'⭐⭐'"></div>
+						<div th:case="1" th:text="'⭐'"></div>
+					</div><br>
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;[[${info.rv_comment}]]</td>
+			</tr>
+		</table>
+		</div>
+
+	<!--Pagination-->
+	<div class="mid4">
+		<form id='actionForm' action="/" method="get"> 
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"> 
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount}"> 
+		</form>
+
+		<script th:inline="javascript">
+		var actionForm = $('#actionForm'); $('.paginate_button a').on('click', function(e) { e.preventDefault();
+		actionForm.find('input[name="pageNum"]').val($(this).attr('href')); actionForm.submit(); });</script>
+
+		<div class="page navigation" th:if="${pageMaker.total!=0}"> 
+			<ul class="pagination">
+ 			<li th:if = "${pageMaker.prev}==true">
+ 			<!-- <li class="paginate_button prev"> -->
+   			<a th:href="@{${pageMaker.REFINE_ROADNM_ADDR}(page=${pageMaker.startPage - 1},PageNum=${pageMaker.startPage - 1})}">Prev</a>
+    		</li>
+    		<li th:each="num: ${#numbers.sequence(pageMaker.startPage,pageMaker.endPage)}" th:classappend="${pageMaker.cri.pageNum} == ${num} ? active : null" }>
+    		<a th:href="@{${pageMaker.REFINE_ROADNM_ADDR}(page=${num},pageNum=${num})}" th:text="${num}"></a>
+    		</li>
+    		<li th:if ="${pageMaker.next}==true and ${pageMaker.endPage > 0}">
+    		<!-- <li class="paginate_button next"> -->
+    		<a  th:href="@{${pageMaker.REFINE_ROADNM_ADDR}(page=${pageMaker.endPage + 1},PageNum=${pageMaker.endPage + 1})}">Next</a>
+    		</li> 
+    		</ul>
+		</div>
+	</div>
+</div>
+	
+<footer>
+	🐾🐥🐹🐱🐶🐾
+</footer>
+	
+
+	
+</body>
+</html>

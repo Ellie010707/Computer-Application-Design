@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ap.consumer.dao.StarDAO">
+
+    <select id="getAllInfo" resultType="com.ap.consumer.vo.StarVO">
+       <![CDATA[
+        select *
+        from
+        (
+            select /*+ INDEX_DESC(review emp_ix01) */
+                @rownum rn,num , mb_id, rv_score, rv_comment,REFINE_ROADNM_ADDR
+            from
+                review
+            where @rownum<= #{pageNum} * #{amount} and REFINE_ROADNM_ADDR like #{REFINE_ROADNM_ADDR}
+        ) as rbd
+        where rn > (#{pageNum} -1) * #{amount}
+        ]]>
+    </select>
+
+    <insert id="starupdate">
+        insert into review(MB_ID,BIZPLC_NM,REFINE_ROADNM_ADDR,rv_score,rv_comment) values(#{MB_ID}, #{BIZPLC_NM}, #{REFINE_ROADNM_ADDR}, #{rv_score}, #{rv_comment})
+    </insert>
+
+    <select id="getTotalCount" resultType="Integer">
+        <![CDATA[
+           select COALESCE(count_data,0)from (select count(*) as count_data from review where num > 0 and REFINE_ROADNM_ADDR=#{REFINE_ROADNM_ADDR}) as rcd
+        ]]>
+    </select>
+
+    <select id="avg" resultType="Integer">
+       select COALESCE(avg_data,0) from(select avg(rv_score) as avg_data from review where REFINE_ROADNM_ADDR=#{REFINE_ROADNM_ADDR}) as rad
+    </select>
+
+</mapper>

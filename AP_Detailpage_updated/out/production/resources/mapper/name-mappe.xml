@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ap.consumer.dao.nameDAO">
+
+<select id="getname2" resultType="com.ap.consumer.vo.NameVO">
+	select * from csv where REFINE_ROADNM_ADDR = #{REFINE_ROADNM_ADDR}
+</select>
+
+</mapper>
