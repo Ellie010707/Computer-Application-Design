@@ -56,8 +56,6 @@ def docker_stats_convertor(data):
 # cpu 사용량이 20% 이하인 컨테이너 찾기
 def find_free(list):
     for i in range(len(list)):
-        print()
-        print(str(i)+"th container Info")
         for data in list[i].stats(decode=True):
             stats_info = docker_stats_convertor(data)
 
