@@ -2,7 +2,7 @@
 2022-2 CAD TUK Project
 
 
-** 실행 방법 **
+### 실행 방법
 
 *  실행
 docker-compose up -d --build
