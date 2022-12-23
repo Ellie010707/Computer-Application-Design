@@ -1,6 +1,9 @@
 # Computer-Application-Design
 2022-2 CAD TUK Project
 
+### 빌드 방법
+cd AP_{Service}
+./gradlew build
 
 ### 실행 방법
 
@@ -26,3 +29,5 @@ pip install docker
 * 헬스체크 모듈 실행  
 python healthcheck/health_check.py  
 
+* 블루 그린 배포 모듀 실행
+python blue_green_deployment_module.py
