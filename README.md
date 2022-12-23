@@ -3,6 +3,7 @@
 
 ### 빌드 방법
 cd AP_{Service}
+
 ./gradlew build
 
 ### 실행 방법
